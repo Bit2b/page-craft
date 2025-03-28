@@ -1,4 +1,5 @@
 import { Editor } from "./editor";
+import { Toolbar } from "./toolbar";
 
 interface documentIdPageProps {
     params: Promise<{ documentId: string }>;
@@ -7,8 +8,8 @@ interface documentIdPageProps {
 const documentIdPage = async ({ params }: documentIdPageProps) => {
     const { documentId } = await params;
     return (
-        <div className="flex flex-col min-h-screen items-center justify-center gap-4 ">
-            <div>DocumentId : {documentId}</div>
+        <div className="flex flex-col min-h-screen items-center justify-center w-full">
+            <Toolbar/>
             <Editor />
         </div>
     )
