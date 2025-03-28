@@ -245,8 +245,18 @@ body {
       margin: 0;
     }
   }
+
+  /* Link styles */
+  a {
+    @apply text-blue-600;
+    cursor: pointer;
+
+    &:hover {
+      @apply underline
+    }
+  }
 }
 /*
-npm install @tiptap/extension-color@2.10.2 --legacy-peer-deps
+npm install @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
 --legacy-peer-deps
 */

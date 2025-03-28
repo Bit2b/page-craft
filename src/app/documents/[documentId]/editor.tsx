@@ -13,6 +13,8 @@ import StarterKit from '@tiptap/starter-kit'
 import Underline from '@tiptap/extension-underline'
 import FontFamily from '@tiptap/extension-font-family'
 import TextStyle from '@tiptap/extension-text-style'
+import TextAlign from '@tiptap/extension-text-align'
+import Link from '@tiptap/extension-link'
 import { Color } from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import { useEditorStore } from '@/store/useEditorStore'
@@ -55,6 +57,12 @@ export const Editor = () => {
     extensions: [
       StarterKit,
       TaskList,
+      Link.configure({
+        openOnClick: false,
+        autolink: true,
+        defaultProtocol: 'https',
+      }),
+
       TaskItem.configure({
         nested: true,
       }),
@@ -73,6 +81,9 @@ export const Editor = () => {
       Underline,
       FontFamily,
       TextStyle,
+      TextAlign.configure({
+        types: ["heading", "paragraph"]
+      }),
     ],
     content: `Hello World`,
   })
