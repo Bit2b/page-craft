@@ -522,6 +522,7 @@ interface ToolbarButtonProps {
   isActive?: boolean,
   icon: LucideIcon,
 }
+
 const ToolbarButton = ({ onClick, isActive, icon: Icon }: ToolbarButtonProps) => {
   return (
     <button
