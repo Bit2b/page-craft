@@ -5,12 +5,13 @@ import { Navbar } from './navbar';
 import TempletesGallery from './TempletesGallery';
 import { useQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api'
+import FullScreenLoader from '@/components/FullScreenLoader';
 
 const Home = () => {
   const documents = useQuery(api.documents.getDocuments)
 
   if (documents === undefined) {
-    return <div> Loding...</div>
+    return <FullScreenLoader label='Document Loading'/>
   }
 
   return (
