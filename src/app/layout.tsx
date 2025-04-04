@@ -6,7 +6,7 @@ import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
 const inter = Inter({
   subsets: ['latin'],
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -29,4 +29,4 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};

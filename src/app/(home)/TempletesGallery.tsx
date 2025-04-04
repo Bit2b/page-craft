@@ -4,10 +4,25 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { templates } from "@/constants/templates"
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-
+import { useRouter } from "next/navigation";
+import { useMutation } from "convex/react";
+import { api } from "../../../convex/_generated/api";
 
 const TempletesGallery = () => {
+  const router = useRouter();
+  const create = useMutation(api.documents.create);
   const [isCreating, setIsCreating] = useState(false);
+
+  const onTempleteClick = (title: string, initialContent: string) => {
+    setIsCreating(true);
+    create({ title, initialContent })
+      .then((documentId) => {
+        router.push(`/documents/${documentId}`)
+      })
+      .finally(() => {
+        setIsCreating(false);
+      })
+  }
 
   return (
     <div className="bg-[#F1F3F4]">
@@ -35,7 +50,8 @@ const TempletesGallery = () => {
                       backgroundRepeat: 'no-repeat',
                     }}
                     disabled={isCreating}
-                    onClick={() => { }}
+                    //Add : proper initial content
+                    onClick={() => onTempleteClick(template.label, '')}
                   />
                   <p className="text-sm font-medium truncate">
                     {template.label}
