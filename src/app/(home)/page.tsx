@@ -1,14 +1,15 @@
 'use client'
 
-import Link from 'next/link';
 import { Navbar } from './navbar';
 import TempletesGallery from './TempletesGallery';
 import { usePaginatedQuery } from 'convex/react';
 import { api } from '../../../convex/_generated/api'
 import { DocumentsTable } from './DocumentsTable';
+import { useSearchParam } from '@/hooks/use-search-param';
 
 const Home = () => {
-  const { results, loadMore, status } = usePaginatedQuery(api.documents.getDocuments, {}, { initialNumItems: 5 })
+  const [search] = useSearchParam();
+  const { results, loadMore, status } = usePaginatedQuery(api.documents.getDocuments, { search }, { initialNumItems: 5 })
 
   return (
     <div className="min-h-screen flex flex-col">
