@@ -14,7 +14,6 @@ export const DocumentRow = ({ document }: DocumentRowProps) => {
 
   const router = useRouter();
 
-
   return (
     <TableRow
       onClick={() => router.push(`/documents/${document._id}`)}
