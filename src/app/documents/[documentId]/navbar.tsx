@@ -20,6 +20,7 @@ import {
 import { DocumentInput } from './documentInput';
 import { useEditorStore } from '@/store/useEditorStore';
 import { OrganizationSwitcher, UserButton } from '@clerk/nextjs';
+import { Avatars } from './avatar';
 
 export const Navbar = () => {
   const { editor } = useEditorStore();
@@ -243,6 +244,7 @@ export const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center gap-3 pl-6">
+        <Avatars />
         <OrganizationSwitcher
           afterCreateOrganizationUrl='/'
           afterLeaveOrganizationUrl='/'
