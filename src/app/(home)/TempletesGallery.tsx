@@ -53,8 +53,7 @@ const TempletesGallery = () => {
                       backgroundRepeat: 'no-repeat',
                     }}
                     disabled={isCreating}
-                    //Add : proper initial content
-                    onClick={() => onTempleteClick(template.label, '')}
+                    onClick={() => onTempleteClick(template.label, template.initialContent)}
                   />
                   <p className="text-sm font-medium truncate">
                     {template.label}

@@ -5,11 +5,11 @@ import { api } from '../../../../convex/_generated/api';
 import { Document } from './document';
 
 interface DocumentIdPageProps {
-  params: { documentId: Id<'documents'> };
+  params: Promise<{ documentId: Id<'documents'> }>;
 }
 
 const DocumentIdPage = async ({ params }: DocumentIdPageProps) => {
-  const { documentId } = params;
+  const { documentId } = await params;
 
   const { getToken } = await auth();
   const token = await getToken({ template: 'convex' }) ?? undefined;

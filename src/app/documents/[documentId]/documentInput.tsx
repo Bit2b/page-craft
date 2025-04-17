@@ -23,7 +23,7 @@ export const DocumentInput = ({ title, id }: DocumentInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const mutate = useMutation(api.documents.updateById);
 
-  const debouncedUpdate = useDebounce((newValue: string) => {
+const debouncedUpdate = useDebounce((newValue: string) => {
     if (newValue === title) return;
 
     setIsPending(true);

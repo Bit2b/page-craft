@@ -1,4 +1,4 @@
-import { ChainedCommands, CommandProps, Extension } from '@tiptap/react';
+import { CommandProps, Extension } from '@tiptap/react';
 import '@tiptap/extension-text-style';
 
 declare module '@tiptap/core' {

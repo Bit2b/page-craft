@@ -4,9 +4,11 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { api } from '../../../../convex/_generated/api';
 
 const convex = new ConvexHttpClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
+
 const liveblocks = new Liveblocks({
   secret: process.env.LIVEBLOCKS_SECRET_KEY!,
 });
+
 export async function POST(req: Request) {
   const sessionClaims = await auth();
   if (!sessionClaims) {
@@ -34,11 +36,19 @@ export async function POST(req: Request) {
     return new Response('unauthorized', { status: 401 });
   }
 
+  const name =
+    user.fullName ?? user.primaryEmailAddress?.emailAddress ?? 'Anonymous';
+  const nameToNumber = name
+    .split('')
+    .reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const hue = Math.abs(nameToNumber) % 360;
+  const color = `hsl(${hue}, 80%, 60%)`;
+
   const session = liveblocks.prepareSession(user.id, {
     userInfo: {
-      name:
-        user.fullName ?? user.primaryEmailAddress?.emailAddress ?? 'Anonymus',
+      name,
       avatar: user.imageUrl,
+      color,
     },
   });
   session.allow(room, session.FULL_ACCESS);
