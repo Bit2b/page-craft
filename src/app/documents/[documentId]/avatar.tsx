@@ -3,7 +3,6 @@
 import { ClientSideSuspense } from "@liveblocks/react";
 import { useOthers, useSelf } from "@liveblocks/react/suspense";
 import { Separator } from "@/components/ui/separator";
-import Image from "next/image";
 
 const AVATAR_SIZE = 36;
 
@@ -56,7 +55,7 @@ const Avatar = ({ src, name }: AvatarProps) => {
        bg-black whitespace-nowrap transition-opacity">
         {name}
       </div>
-      <Image
+      <img
         alt={name}
         src={src}
         className="size-full rounded-full"
